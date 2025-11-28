@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Create the 'archives' directory if it doesn't exist
+if [ ! -d "./archives" ]; then
+  mkdir ./archives
+fi
+
+echo "Enter the topic name:"
+cd src || exit 1  # Ensures that we can change to the 'src' directory, exit if not
+
+read -r topic  # Read the topic name
+
+cd ../archives || exit 1  # Change to the 'archives' directory
+
+mkdir -p "$topic"  # Create the topic directory, -p ensures no error if it exists
+
+# Move all files from src to archives/$topic
+mv ../src/* "$topic/"
+
