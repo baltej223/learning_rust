@@ -17,3 +17,4 @@ mkdir -p "$topic"  # Create the topic directory, -p ensures no error if it exist
 # Move all files from src to archives/$topic
 mv ../src/* "$topic/"
 
+cd src && touch main.rs
