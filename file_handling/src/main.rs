@@ -63,5 +63,6 @@ fn main(){
         Err(why) => panic!("couldn't write to: {}", why),
         Ok(_) => println!("successfully wrote to ssh.txt",),
     }
+
 }
 
