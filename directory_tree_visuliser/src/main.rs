@@ -34,19 +34,31 @@ fn main() {
     let binding = cwd().expect("Here");
     let curr_dir = Path::new(&binding);
 
-    recursive_print_insides_of_folder(curr_dir.to_path_buf());
+    recursive_print_insides_of_folder(curr_dir.to_path_buf(), 0);
 }
 
-fn recursive_print_insides_of_folder(path_to: std::path::PathBuf){
+fn n_tab_chars(i : i32) -> String {
+    let mut to_ret = String::new();
+    for _ in 1..=i {
+        to_ret.push_str("    ");
+        
+    }
+    to_ret
+}
+
+fn recursive_print_insides_of_folder(path_to: std::path::PathBuf, depth: i32){
     // println!("Path which is being sent to the func is: {}", path_to.display());
     let this_folder : Vec<FilesInFolder> = read_folder(&path_to);
 
     for file in this_folder {
         
         if !file.is_dir {
-            println!("File at path: {}", file.pathIs.display());
+            print!("{}", n_tab_chars(depth));
+            println!("{}", file.file_name.display());
             continue;
         }
-        recursive_print_insides_of_folder(file.pathIs);
+        print!("{}", n_tab_chars(depth));
+        println!("{}", file.file_name.display());
+        recursive_print_insides_of_folder(file.pathIs, depth+1);
     }
 }
