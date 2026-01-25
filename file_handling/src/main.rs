@@ -8,7 +8,9 @@ fn main(){
     let path = Path::new("./ssh.txt");
     
     if !path.exists() {
-        fs::write("./ssh.txt", "").expect("blam");
+        fs
+            ::write("./ssh.txt", "")
+            .expect("blam");
     }
 
     let current_content = fs
@@ -19,7 +21,10 @@ fn main(){
     println!("Enter something to put to file ssh.txt: ");
     
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Booo...");
+    io
+        ::stdin()
+        .read_line(&mut input)
+        .expect("Booo...");
 
     // println!("You entered: {}", input);
 
@@ -63,6 +68,5 @@ fn main(){
         Err(why) => panic!("couldn't write to: {}", why),
         Ok(_) => println!("successfully wrote to ssh.txt",),
     }
-
 }
 

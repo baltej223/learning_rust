@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "directory_tree_visuliser"
+name = "matrices"
 version = "0.1.0"
