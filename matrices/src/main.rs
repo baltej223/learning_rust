@@ -53,10 +53,23 @@ fn transpose(matrix: Matrix<i32>) -> Matrix<i32> {
     transposed_matrix
 }
 
+fn construct_identity_matrix(rows: usize, cols: usize) -> Matrix<i32> {
+    let mut zero_matrix = construct_zero_matrix(rows, cols);
+    for row in 0..rows {
+        for col in 0..cols {
+            if row == col {
+                zero_matrix.data[row][col] = 1;
+            }
+        }
+    }
+    zero_matrix
+}
+
 fn main() {
     let vec = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
     let matrix = construct(vec);
     print_matrix(&matrix);
     let transposed_mat = transpose(matrix);
     print_matrix(&transposed_mat);
+    print_matrix(&construct_identity_matrix(12, 5));
 }
