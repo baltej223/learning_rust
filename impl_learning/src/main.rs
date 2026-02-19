@@ -5,7 +5,7 @@ struct Complex {
 
 impl Complex {
     fn distance(self) {
-        let distance = (((self.real) ^ 2 + (self.img) ^ 2) as f64).sqrt();
+        let distance = ((self.real.pow(2) + (self.img).pow(2)) as f64).sqrt();
         println!("{}", distance);
     }
 }
